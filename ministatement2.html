@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Overview | Prestige Banking</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .header h2 {
+      font-size: 2.2rem;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .details-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      border: 1px solid rgba(255,255,255,0.1);
+      width: 100%;
+      max-width: 500px;
+      transform: translateY(0);
+      animation: containerEntry 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .detail-item:hover {
+      transform: translateX(10px);
+    }
+
+    .detail-icon {
+      width: 40px;
+      margin-right: 1.5rem;
+      color: #2ecc71;
+    }
+
+    .detail-content strong {
+      display: block;
+      font-weight: 300;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+    }
+
+    .detail-content span {
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .balance {
+      color: #2ecc71;
+      font-size: 1.8rem !important;
+    }
+
+    .home-button {
+      display: inline-flex;
+      align-items: center;
+      padding: 1rem 2rem;
+      margin-top: 2rem;
+      background: linear-gradient(135deg, rgba(46,204,113,0.8) 0%, rgba(39,174,96,0.7) 100%);
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .home-button:hover {
+      background: linear-gradient(135deg, rgba(46,204,113,1) 0%, rgba(39,174,96,1) 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .home-button i {
+      margin-right: 10px;
+    }
+
+    @keyframes containerEntry {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 1.5rem;
+      }
+      
+      .details-container {
+        padding: 1.5rem;
+      }
+      
+      .detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .detail-icon {
+        margin-bottom: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h2>Account Overview</h2>
+    <p>Your banking details at a glance</p>
+  </div>
+
+  <div class="details-container">
+    <div class="detail-item">
+      <i class="fas fa-wallet detail-icon"></i>
+      <div class="detail-content">
+        <strong>Account Number</strong>
+        <span>{{ accno }}</span>
+      </div>
+    </div>
+
+    <div class="detail-item">
+      <i class="fas fa-user-tag detail-icon"></i>
+      <div class="detail-content">
+        <strong>Account Holder</strong>
+        <span>{{ name }}</span>
+      </div>
+    </div>
+
+    <div class="detail-item">
+      <i class="fas fa-envelope detail-icon"></i>
+      <div class="detail-content">
+        <strong>Email Address</strong>
+        <span>{{ email }}</span>
+      </div>
+    </div>
+
+    <div class="detail-item">
+      <i class="fas fa-rupee-sign detail-icon"></i>
+      <div class="detail-content">
+        <strong>Current Balance</strong>
+        <span class="balance">₹ {{balance}}</span>
+      </div>
+    </div>
+
+    <a href="/home" class="home-button">
+      <i class="fas fa-home"></i>
+      Return to Dashboard
+    </a>
+  </div>
+</body>
+</html>
